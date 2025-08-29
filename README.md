@@ -113,7 +113,7 @@ Se a limpeza de cache não funcionar, esta ferramenta gratuita e poderosa resolv
 1.  Baixe o **FileTypesMan (versão 64-bit)** do site oficial: [https://www.nirsoft.net/utils/file_types_manager.html](https://www.nirsoft.net/utils/file_types_manager.html)
 2.  Descompacte o arquivo `.zip` e execute `FileTypesMan.exe`.
 3.  Na lista, encontre a extensão `.torrent` e dê um duplo clique nela.
-4.  No campo `Ícone Padrão`, clique no botão `...` e selecione manualmente o arquivo `qbittorrent.ico` da sua pasta de scripts.
+4.  No campo `Ícone Padrão`, clique no botão `...` e selecione manualmente o arquivo `ibittorrent.ico` da sua pasta de scripts.
 5.  Clique em "OK" para salvar.
 6.  No menu superior do FileTypesMan, vá em **Options > Refresh System Icons Now**. Isso força o Windows a recarregar todos os ícones imediatamente.
 
