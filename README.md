@@ -1,8 +1,8 @@
-# qBit-Click-Uploader ✨
+# qBit-Click-Uploader 
 
 Adicione torrents ao seu qBittorrent Web UI com um simples clique duplo, de forma silenciosa e automática.
 
-## 📖 Sobre o Projeto
+## Sobre o Projeto
 
 Cansado de ter que abrir o navegador, fazer login, clicar em "Adicionar Arquivo" e navegar pelas pastas toda vez que baixa um arquivo `.torrent`?
 
@@ -16,7 +16,7 @@ Este projeto automatiza todo esse processo. Uma vez configurado, você pode simp
 
 É uma solução "clique e esqueça" que otimiza completamente o fluxo de trabalho para quem usa o qBittorrent em um servidor.
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
 * **Integração Total:** Cria uma associação de arquivo personalizada e exclusiva para a extensão `.torrent`.
 * **Execução Silenciosa:** Nenhuma janela de terminal aparece durante o processo.
@@ -25,7 +25,7 @@ Este projeto automatiza todo esse processo. Uma vez configurado, você pode simp
 * **Sistema de Log:** Mantém um registro de todas as operações e erros em um arquivo `qbt_uploader.log`.
 * **Portátil:** Todos os scripts podem ser colocados em qualquer pasta.
 
-## 🔧 Começando
+##  Começando
 
 Siga os passos abaixo para configurar e começar a usar a ferramenta.
 
@@ -46,7 +46,7 @@ Siga os passos abaixo para configurar e começar a usar a ferramenta.
         * `qbt_uploader.pyw`
         * `run_qbt_uploader.bat`
         * `Configurar_Associacao_Completa.bat`
-        * `qbittorrent.ico`
+        * `ibittorrent.ico`
 
 2.  **Configure o Script `qbt_uploader.pyw`:**
     * Abra o arquivo `qbt_uploader.pyw` com um editor de texto.
@@ -74,7 +74,7 @@ Siga os passos abaixo para configurar e começar a usar a ferramenta.
     * Siga as instruções na tela e confirme a operação. Este script fará tudo: criará o novo tipo de arquivo, definirá o ícone e associará a extensão `.torrent`.
     * **Reinicie o seu computador** para garantir que todas as alterações sejam aplicadas.
 
-## ✨ Uso
+##  Uso
 
 Após a configuração, o uso é incrivelmente simples:
 
@@ -82,7 +82,7 @@ Após a configuração, o uso é incrivelmente simples:
 
 É isso. O torrent será adicionado silenciosamente ao seu qBittorrent.
 
-## 🚑 Solução de Problemas (Troubleshooting)
+##  Solução de Problemas (Troubleshooting)
 
 Encontrou um problema? Veja as soluções para os casos mais comuns.
 
@@ -95,7 +95,7 @@ Se os torrents começam a baixar imediatamente, mesmo com a opção `'paused': '
 2.  Na seção **"Ao adicionar um torrent"**, marque a caixa **"Não iniciar o download automaticamente"**.
 3.  Clique em **Salvar**.
 
-![Configuração do qBittorrent](https://imgur.com/a/tofiP5V)
+![Configuração do qBittorrent](https://i.imgur.com/xJASSVW.png)
 
 
 ### O ícone personalizado do `.torrent` não aparece
@@ -117,6 +117,6 @@ Se a limpeza de cache não funcionar, esta ferramenta gratuita e poderosa resolv
 5.  Clique em "OK" para salvar.
 6.  No menu superior do FileTypesMan, vá em **Options > Refresh System Icons Now**. Isso força o Windows a recarregar todos os ícones imediatamente.
 
-## 📜 Licença
+##  Licença
 
 Distribuído sob a Licença MIT. Veja o arquivo `LICENSE` para mais informações.
