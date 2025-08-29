@@ -12,16 +12,18 @@ Este projeto automatiza todo esse processo. Uma vez configurado, você pode simp
 2.  Enviar o arquivo `.torrent`.
 3.  Adicioná-lo à sua lista de downloads, já pausado e em uma pasta pré-definida.
 4.  Registrar todo o processo em um arquivo de log para fácil depuração.
+5.  Atribuir um ícone personalizado e exclusivo aos arquivos `.torrent`, sem afetar outros tipos de arquivo.
 
 É uma solução "clique e esqueça" que otimiza completamente o fluxo de trabalho para quem usa o qBittorrent em um servidor.
 
 ## 🚀 Funcionalidades
 
-* **Integração Total:** Associa-se à extensão `.torrent` do seu sistema operacional.
-* **Execução Silenciosa:** Sem janelas de terminal aparecendo durante o processo.
+* **Integração Total:** Cria uma associação de arquivo personalizada e exclusiva para a extensão `.torrent`.
+* **Execução Silenciosa:** Nenhuma janela de terminal aparece durante o processo.
 * **Altamente Configurável:** Defina a pasta de destino padrão e se os torrents devem começar pausados.
+* **Ícone Personalizado:** Define um ícone exclusivo para arquivos `.torrent`.
 * **Sistema de Log:** Mantém um registro de todas as operações e erros em um arquivo `qbt_uploader.log`.
-* **Portátil:** O script pode ser colocado em qualquer pasta, facilitando a organização.
+* **Portátil:** Todos os scripts podem ser colocados em qualquer pasta.
 
 ## 🔧 Começando
 
@@ -40,10 +42,14 @@ Siga os passos abaixo para configurar e começar a usar a ferramenta.
 ### Instalação e Configuração
 
 1.  **Baixe os Arquivos:**
-    * Faça o download dos arquivos `qbt_uploader.pyw` e `run_qbt_uploader.bat` deste repositório e coloque ambos na mesma pasta em seu computador.
+    * Faça o download de **todos** os arquivos deste repositório e coloque-os **na mesma pasta** no seu computador. Os arquivos essenciais são:
+        * `qbt_uploader.pyw`
+        * `run_qbt_uploader.bat`
+        * `Configurar_Associacao_Completa.bat`
+        * `qbittorrent.ico`
 
 2.  **Configure o Script `qbt_uploader.pyw`:**
-    * Abra o arquivo `qbt_uploader.pyw` com um editor de texto (como Bloco de Notas, VS Code, etc.).
+    * Abra o arquivo `qbt_uploader.pyw` com um editor de texto.
     * Edite a seção `--- CONFIGURAÇÃO DO SCRIPT ---` com seus dados:
 
     ```python
@@ -52,7 +58,6 @@ Siga os passos abaixo para configurar e começar a usar a ferramenta.
     QBIT_USERNAME = "seu_usuario"
     QBIT_PASSWORD = "sua_senha"
     VERIFY_SSL_CERT = True # Mude para False se usar um certificado SSL auto-assinado
-    # --- FIM DA CONFIGURAÇÃO DO SCRIPT ---
     ```
     * Na mesma tela, ajuste as opções de download como preferir:
     ```python
@@ -64,13 +69,10 @@ Siga os passos abaixo para configurar e começar a usar a ferramenta.
     ```
     * Salve o arquivo após as alterações.
 
-3.  **Associe a Extensão `.torrent` (Windows):**
-    * Encontre qualquer arquivo `.torrent` no seu computador.
-    * Clique com o botão direito sobre ele e vá em `Abrir com > Escolher outro aplicativo`.
-    * Role para baixo, clique em `Mais aplicativos` e depois em `Procurar outro aplicativo neste PC`.
-    * Navegue até a pasta onde você salvou os scripts e selecione o arquivo `run_qbt_uploader.bat`.
-    * **Importante:** Marque a caixa "Sempre usar este aplicativo para abrir arquivos .torrent".
-    * Clique em "OK".
+3.  **Execute o Configurador Automático:**
+    * Clique com o botão direito no arquivo `Configurar_Associacao_Completa.bat` e selecione **"Executar como administrador"**.
+    * Siga as instruções na tela e confirme a operação. Este script fará tudo: criará o novo tipo de arquivo, definirá o ícone e associará a extensão `.torrent`.
+    * **Reinicie o seu computador** para garantir que todas as alterações sejam aplicadas.
 
 ## ✨ Uso
 
@@ -78,24 +80,42 @@ Após a configuração, o uso é incrivelmente simples:
 
 * **Dê um clique duplo em qualquer arquivo `.torrent`!**
 
-É isso. Nenhuma janela aparecerá. Em alguns segundos, o torrent será adicionado à sua lista no qBittorrent Web UI. Se algo der errado, verifique o arquivo `qbt_uploader.log` que será criado na mesma pasta dos scripts.
+É isso. O torrent será adicionado silenciosamente ao seu qBittorrent.
 
-## 🐧 Para Usuários de Linux/macOS
+## 🚑 Solução de Problemas (Troubleshooting)
 
-O script Python (`.pyw` deve ser renomeado para `.py`) é multiplataforma. O que muda é o "executor". Em vez do `.bat`, você pode criar um script de shell (`.sh`).
+Encontrou um problema? Veja as soluções para os casos mais comuns.
 
-1.  **Crie um arquivo `run_uploader.sh`** com o seguinte conteúdo:
-    ```sh
-    #!/bin/bash
-    # O caminho para o python pode variar. Use 'which python3' para encontrar.
-    # O caminho para o script deve ser absoluto.
-    /usr/bin/python3 "/caminho/completo/para/qbt_uploader.py" "$1"
-    ```
-2.  **Torne-o executável:**
-    ```sh
-    chmod +x run_uploader.sh
-    ```
-3.  **Associe a extensão `.torrent`** ao seu script `run_uploader.sh` através das configurações do seu ambiente de desktop (GNOME, KDE, etc.).
+### Torrents não iniciam pausados
+
+Se os torrents começam a baixar imediatamente, mesmo com a opção `'paused': 'true'` no script, o problema é uma configuração no seu qBittorrent que está se sobrepondo ao comando da API.
+
+**Solução:**
+1.  Na interface web do qBittorrent, vá em **Ferramentas > Opções > Downloads**.
+2.  Na seção **"Ao adicionar um torrent"**, marque a caixa **"Não iniciar o download automaticamente"**.
+3.  Clique em **Salvar**.
+
+![Configuração do qBittorrent](https://imgur.com/a/tofiP5V)
+
+
+### O ícone personalizado do `.torrent` não aparece
+
+Às vezes, o Windows pode ser teimoso e não exibir o novo ícone, mesmo após reiniciar. Isso é causado por um cache de ícones "preso".
+
+**Solução 1: Limpar o Cache de Ícones (Automático)**
+1.  Execute o script `Limpar_Cache_Icones.bat` (incluído no repositório) como administrador.
+2.  Sua tela irá piscar (a barra de tarefas vai desaparecer e voltar), o que é normal.
+3.  Verifique se o ícone foi corrigido.
+
+**Solução 2: Forçar a Atualização com FileTypesMan (Definitivo)**
+Se a limpeza de cache não funcionar, esta ferramenta gratuita e poderosa resolverá o problema.
+
+1.  Baixe o **FileTypesMan (versão 64-bit)** do site oficial: [https://www.nirsoft.net/utils/file_types_manager.html](https://www.nirsoft.net/utils/file_types_manager.html)
+2.  Descompacte o arquivo `.zip` e execute `FileTypesMan.exe`.
+3.  Na lista, encontre a extensão `.torrent` e dê um duplo clique nela.
+4.  No campo `Ícone Padrão`, clique no botão `...` e selecione manualmente o arquivo `qbittorrent.ico` da sua pasta de scripts.
+5.  Clique em "OK" para salvar.
+6.  No menu superior do FileTypesMan, vá em **Options > Refresh System Icons Now**. Isso força o Windows a recarregar todos os ícones imediatamente.
 
 ## 📜 Licença
 
