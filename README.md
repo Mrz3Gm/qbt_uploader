@@ -2,7 +2,7 @@
 
 Adicione torrents ao seu qBittorrent Web UI com um simples clique duplo, de forma silenciosa e automática.
 
-![Demo](https://i.imgur.com/8Yl1wfl.png) ## 📖 Sobre o Projeto
+## 📖 Sobre o Projeto
 
 Cansado de ter que abrir o navegador, fazer login, clicar em "Adicionar Arquivo" e navegar pelas pastas toda vez que baixa um arquivo `.torrent`?
 
